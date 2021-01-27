@@ -13,6 +13,8 @@ const routes = () => {
       window.location.hash = '#index';
       document.querySelector('#content').innerHTML = Main();
       MainMethods.addEventListener();
+      document.querySelector('input').value = 'Fortaleza';
+      MainMethods.fetchData();
 
       break;
   }
@@ -27,7 +29,6 @@ const urlListner = () => {
 document.addEventListener('DOMContentLoaded', () => {
   routes();
   urlListner();
-  
 });
 
 DB.initialize();
