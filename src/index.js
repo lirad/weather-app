@@ -13,9 +13,8 @@ const routes = () => {
       window.location.hash = '#index';
       document.querySelector('#content').innerHTML = Main();
       MainMethods.addEventListener();
-      document.querySelector('input').value = 'Fortaleza';
-      MainMethods.fetchData();
-
+      MainMethods.buildArrayOfCities();
+      DB.initialize();
       break;
   }
 };

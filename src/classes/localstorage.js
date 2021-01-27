@@ -1,41 +1,30 @@
 const DB = {
   initialize() {
-    const defaultProjct = [{
-      title: 'Restaurant js app ',
-      description: 'an app use js vanilla ',
-      priority: 'High',
-      dueDate: '2021-01-28',
-      createdDate: '15-01-2021',
-      todos: [{
-        itemDescription: 'setup webpack ',
-        completed: false,
-        date: '01/13/2021',
-      }],
-    }];
-    if (window.localStorage.getItem('projects') == null) {
-      window.localStorage.setItem('projects', JSON.stringify(defaultProjct));
+    const defaultCities = ['Fortaleza', 'Campina Grande'];
+    if (window.localStorage.getItem('cities') == null) {
+      window.localStorage.setItem('cities', JSON.stringify(defaultCities));
     }
   },
-
-
-  getProjects() {
-    const projects = JSON.parse(window.localStorage.getItem('projects'));
-    return projects;
+  getCities() {
+    let cities = [];
+    if (window.localStorage.getItem('cities')) {
+      cities = JSON.parse(window.localStorage.getItem('cities'));
+    }
+    return cities;
   },
-  saveProject(project) {
-    const b = this.getProjects();
-    project.id = b.length + 1;
-    b.push(project);
-    window.localStorage.setItem('projects', [JSON.stringify(b)]);
+  addCity(city) {
+    const cities = this.getCities();
+    console.log(Array.isArray(cities));
+    cities.push(city);
+    window.localStorage.setItem('cities', JSON.stringify(cities));
   },
-  getSingleProject(projectId) {
-    const project = this.getProjects();
-    return project[projectId];
+  removeCity(cityId) {
+    const cities = this.getCities();
+    cities.splice(cityId, 1);
+    this.updateCities(cities);
   },
-  updateProject(updatedProject) {
-    const projects = this.getProjects();
-    projects[updatedProject.id] = updatedProject;
-    window.localStorage.setItem('projects', JSON.stringify(projects));
+  updateCities(updatedCities) {
+    window.localStorage.setItem('cities', JSON.stringify(updatedCities));
   },
 };
 

@@ -16,7 +16,7 @@ const Main = () => {
       </div>
     </div>
     </div>
-    <div class="w-full  " id="result">
+    <div class="w-full" id="result">
     
     </div>
 
